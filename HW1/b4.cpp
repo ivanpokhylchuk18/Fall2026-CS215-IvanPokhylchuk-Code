@@ -1,49 +1,49 @@
-// ...existing code...
-#include <iostream>
-#include <iomanip>
-using namespace std;
+//Ivan Pokhylchuk, 0474730
+//b4
 
-// Linear search: count one comparison each time an element is examined.
-int linearSearch(const int arr[], int size, int value, int &count) {
-    count = 0;
-    for (int i = 0; i < size; ++i) {
-        ++count;  // one comparison against arr[i]
-        if (arr[i] == value) {
-            return i;
+
+#include <iostream> // for input/output
+using namespace std; //use the standard namespace to avoid prefixing std:: before cout and cin
+
+int linearSearch(const int arr[], int size, int value, int &count) { //linear search function that takes an array, its size, a value to search for, and a reference to a count variable
+    count = 0; // set our count to 0
+    for (int i = 0; i < size; ++i) { // a for loop to go through every number in the array and check if it is equal to the value we are looking for
+        count++; //count +1 if we have to check the next number in the array
+        if (arr[i] == value) { //if the number is equal to the value we are looking for, return the index of that number in the array
+            return i; //return i
         }
     }
-    return -1;
+    return -1; //if we have gone through the whole array and did not find the value, return -1
 }
 
-// Binary search: count one comparison each time a probe is checked.
-int binarySearch(const int arr[], int size, int value, int &count) {
-    count = 0;
-    int left = 0;
-    int right = size - 1;
+int binarySearch(const int arr[], int size, int value, int &count) { //binary search function that takes an array, its size, a value to search for, and a reference to a count variable 
+    count = 0; //set our count to 0
+    int left = 0; //set the left index to 0
+    int right = size - 1; //set the right index to the last index of the array
 
-    while (left <= right) {
-        ++count;  // one probe of arr[mid]
-        int mid = left + (right - left) / 2;
+    while (left <= right) { //while the left index is less than or equal to the right one, we are going to keep searching for the value in the array
+        count++;  // count +1 if we have to check the next number in the array
+        int mid = left + (right - left) / 2; //middle of the array 
 
-        if (arr[mid] == value) {
+        if (arr[mid] == value) { //if the middle number is equal to the value we are looking for, return the index of that number in the array
             return mid;
-        } else if (arr[mid] < value) {
-            left = mid + 1;
+        } else if (arr[mid] < value) { //if the middle number is less than the value we are looking for, we are going to search in the right half of the array
+            left = mid + 1; //left index is now the middle index + 1
         } else {
-            right = mid - 1;
+            right = mid - 1; //if the middle number is greater than the value we are looking for, we are going to search in the left half of the array
         }
     }
     return -1;
 }
 
 int main() {
-    const int SIZE = 20;
+    const int SIZE = 20; //size of the array
     int data[SIZE] = {3, 7, 11, 16, 21, 24, 30, 35, 41, 44,
-                      50, 55, 61, 67, 72, 78, 83, 88, 94, 99};
+                      50, 55, 61, 67, 72, 78, 83, 88, 94, 99}; //array of integers to search through
 
-    int targets[3] = {3, 55, 99};
+    int targets[3] = {3, 55, 99}; //array of tergets to search for in the array above 
 
-    for (int target : targets) {
+    for (int target : targets) { //for loop to go through the targets array and search for each target in the data array using both linear and binary search, give us the count of comparisons for each search, and print the results
         int linearCount = 0;
         int binaryCount = 0;
 
@@ -56,6 +56,5 @@ int main() {
         cout << endl;
     }
 
-    // The counts show a clear pattern: linear search grows with the target's position in the array, while binary search stays close to logarithmic because it discards half the data each step. Linear search is still reasonable for very small arrays, unsorted data, or one-off searches where sorting or maintaining order is not worth the extra setup.
-    return 0;
+    return 0; //return 0 to indicate that the program has ended successfully
 }
