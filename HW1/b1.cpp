@@ -20,7 +20,7 @@ int main() { //main fucntion
             break;
         }
         else { //if the user enters a valid reading, check if it is the lowest or highest reading and update the sum and count
-            if (count == 0) {
+            if (count == 1) {  //if this is the first reading, set both lowest and highest to the current reading
                 lowest = temp;
                 highest = temp;
             }
