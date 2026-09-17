@@ -2,22 +2,23 @@
 //B1
 
 #include <iostream> //include the iostream library for input and output
+using namespace std; //use the standard namespace to avoid prefixing std:: before standard library names
 
 int main(){ //main function
     int numReadings; //integer for the number of readings
-    std::cout << "How many readings do you have? "; //ask the user for the number of readings
-    std::cin >> numReadings; //store the number of readings in the variable numReadings
+    cout << "How many readings do you have? "; //ask the user for the number of readings
+    cin >> numReadings; //store the number of readings in the variable numReadings
 
     if(numReadings == 0){ //if the number of readings is 0, print a message and exit the program
-        std::cout << "No readings to process." << std::endl;
+        cout << "No readings to process." << endl;
         return 0;
     }
 
     double* readings = new double[numReadings]; //create a pointer to a double array of size numReadings, so the user can choose the size of the array before it compiles, therefore allowing for dynamic memory allocation
 
     for(int i = 0; i < numReadings; i++){ //loop through the number of readings and ask the user to input each reading
-        std::cout << "Enter reading " << (i + 1) << ": ";
-        std::cin >> readings[i];
+        cout << "Enter reading " << (i + 1) << ": ";
+        cin >> readings[i];
     }
 
     double sum = 0; //double for sum of readings
@@ -30,8 +31,8 @@ int main(){ //main function
     }
     double average = sum / numReadings; //get the avg
 
-    std::cout << "Average: " << average << std::endl; //output the average and highest reading
-    std::cout << "Highest: " << highest << std::endl;
+    cout << "Average: " << average << endl; //output the average and highest reading
+    cout << "Highest: " << highest << endl;
 
     // Release memory
     delete[] readings; // ~!IMPORTANT!~ very important to free the memory allocated for the readings array to avoid memory leaks

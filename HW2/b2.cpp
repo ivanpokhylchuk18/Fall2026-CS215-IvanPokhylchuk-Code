@@ -2,6 +2,7 @@
 //B2
 
 #include <iostream> //include the iostream library for input and output
+using namespace std; //use the standard namespace to avoid prefixing std:: before standard library names
 
 void minMax(const int *arr, int size, int *low, int *high){ //void function of minMax, that take a pointer to an int array, its size, pointers to low and high as paramaters
     *low = arr[0]; //initialize low to the first element of the array
@@ -34,22 +35,22 @@ int main(){ //main function
     double avg; //avg of the integers in the array
 
     for (int i = 0; i < SIZE; i++){ //loop through the array and ask the user to input each integer
-        std::cout << "Enter integer " << (i + 1) << ": ";
-        std::cin >> arr[i];
+        cout << "Enter integer " << (i + 1) << ": ";
+        cin >> arr[i];
     }
 
     if (SIZE == 0){ //if the size of the array is 0, print a message and exit the program
-        std::cout << "No integers to process." << std::endl;
+        cout << "No integers to process." << endl;
         return 0;
     }
 
     minMax(arr, SIZE, &low, &high); //call minMax function with the array and pointers to low and high
-    std::cout << "Lowest value: " << low << std::endl;
-    std::cout << "Highest value: " << high << std::endl;
+    cout << "Lowest value: " << low << endl;
+    cout << "Highest value: " << high << endl;
 
     calculateSumAndAvg(arr, SIZE, &sum, &avg); //call calculateSumAndAvg function with the array and pointers to sum and avg
-    std::cout << "Sum: " << sum << std::endl;
-    std::cout << "Average: " << avg << std::endl;
+    cout << "Sum: " << sum << endl;
+    cout << "Average: " << avg << endl;
 
 
     return 0; //return 0 on successful completion of the program
