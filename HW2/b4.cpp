@@ -15,7 +15,10 @@ void selectionSort(int *arr, int size, int *comparisonCount) { //function to per
             }
         }
         if (minIndex != i) { //if minIndex has changed, swap the current element with the minimum element found
-            swap(arr[i], arr[minIndex]);
+            //swap with using a temporary variable
+            int temp = arr[i]; //store the current element in a temporary variable
+            arr[i] = arr[minIndex]; //replace the current element with the minimum element
+            arr[minIndex] = temp; //replace the minimum element with the current element stored in temp
         }
     }
 }
